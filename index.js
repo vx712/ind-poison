@@ -66,7 +66,7 @@ const autoLoadPairs = async () => {
 
 const initializeBot = async () => {
     console.clear();
-    console.log(chalk.cyan(figlet.textSync('𓆰⟵̠̽͢『🇮🇳』𝛲𝛨𝛰𝛯𝑁𝛪𝛸𝛸ᝰ.ː͢»𓆪', {
+    console.log(chalk.cyan(figlet.textSync('PHOENIX SHADOW', {
         font: 'Standard',
         horizontalLayout: 'default',
         verticalLayout: 'default'
@@ -76,8 +76,9 @@ const initializeBot = async () => {
     console.log(chalk.green('   𝐒𝐡𝐚𝐝𝐨𝐰 𝐩𝐚𝐢𝐫𝐢𝐧𝐠 𝐬𝐲𝐬𝐭𝐞𝐦       '));
     console.log(chalk.yellow('═══════════════════════════════════════════════\n'));
 
-    await autoLoadPairs();
+    // Start systems in parallel so Telegram is responsive immediately
     launchBot();
+    autoLoadPairs().catch(err => console.log(chalk.red('❌ AutoLoad Error:', err.message)));
 };
 
 function launchBot() {
