@@ -68,7 +68,9 @@ const startAutoLoadLoop = () => {
   runAutoLoad();
   setInterval(runAutoLoad, 60 * 60 * 1000);
 };
-startAutoLoadLoop();
+loadAdminIDs().then(() => {
+  startAutoLoadLoop();
+});
 
 const gracefulShutdown = (signal) => {
   if (isShuttingDown) return;
